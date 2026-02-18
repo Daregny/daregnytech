@@ -1,88 +1,97 @@
+import { useState } from "react";
 import bgAurora from "@/assets/bg-aurora.jpg";
 import {
   Github,
   Linkedin,
-  Twitter,
   Instagram,
-  Globe,
-  Youtube,
-  Mail,
   ExternalLink,
-  Code2,
-  Briefcase,
-  BookOpen,
-  Coffee,
+  Send,
+  Twitter,
 } from "lucide-react";
 
+// ─── i18n ────────────────────────────────────────────────────────────────────
+
+type Lang = "pt" | "en" | "es";
+
+const i18n: Record<
+  Lang,
+  {
+    title: string;
+    bio: string;
+    links: { label: string; description: string }[];
+    footer: string;
+  }
+> = {
+  pt: {
+    title: "Backend Python Developer | Django · Linux SysAdmin · APIs REST · DevOps · Integrações de Sistemas",
+    bio: "Engenheira de Sistemas com mais de 15 anos em tecnologia. Especialista em Backend Python (Django, Flask), APIs REST, Linux SysAdmin, DevOps e integrações ERP (TOTVS · Odoo). Atuando no Brasil desde 2018, com foco em qualidade de código, automação e liderança em comunidades tech. 🚀",
+    links: [
+      { label: "GitHub", description: "Repositórios e projetos open source" },
+      { label: "LinkedIn", description: "Perfil profissional" },
+      { label: "Telegram", description: "Vamos conversar!" },
+      { label: "X / Twitter", description: "Novidades e pensamentos tech" },
+      { label: "Instagram", description: "Bastidores e comunidade tech" },
+    ],
+    footer: "Feito com ♥ e muito Python",
+  },
+  en: {
+    title: "Backend Python Developer | Django · Linux SysAdmin · REST APIs · DevOps · System Integrations",
+    bio: "Systems Engineer with 15+ years in technology. Expert in Backend Python (Django, Flask), REST APIs, Linux SysAdmin, DevOps, and ERP integrations (TOTVS · Odoo). Based in Brazil, focused on code quality, automation, and leading tech communities. 🚀",
+    links: [
+      { label: "GitHub", description: "Repositories & open source projects" },
+      { label: "LinkedIn", description: "Professional profile" },
+      { label: "Telegram", description: "Let's talk!" },
+      { label: "X / Twitter", description: "Tech news & thoughts" },
+      { label: "Instagram", description: "Behind the scenes & tech community" },
+    ],
+    footer: "Made with ♥ and lots of Python",
+  },
+  es: {
+    title: "Desarrolladora Backend Python | Django · Linux SysAdmin · APIs REST · DevOps · Integraciones de Sistemas",
+    bio: "Ingeniera de Sistemas con más de 15 años en tecnología. Especialista en Backend Python (Django, Flask), APIs REST, Linux SysAdmin, DevOps e integraciones ERP (TOTVS · Odoo). Trabajando en Brasil desde 2018, enfocada en calidad de código, automatización y liderazgo en comunidades tech. 🚀",
+    links: [
+      { label: "GitHub", description: "Repositorios y proyectos open source" },
+      { label: "LinkedIn", description: "Perfil profesional" },
+      { label: "Telegram", description: "¡Hablemos!" },
+      { label: "X / Twitter", description: "Novedades y pensamientos tech" },
+      { label: "Instagram", description: "Detrás de escena y comunidad tech" },
+    ],
+    footer: "Hecho con ♥ y mucho Python",
+  },
+};
+
+// ─── Links data (URLs are language-agnostic) ────────────────────────────────
+
 interface LinkItem {
-  label: string;
-  url: string;
   icon: React.ElementType;
-  description?: string;
-  featured?: boolean;
+  url: string;
 }
 
-const links: LinkItem[] = [
-  {
-    label: "GitHub",
-    url: "https://github.com/seu-usuario",
-    icon: Github,
-    description: "Meus repositórios e projetos",
-    featured: true,
-  },
-  {
-    label: "LinkedIn",
-    url: "https://linkedin.com/in/seu-usuario",
-    icon: Linkedin,
-    description: "Meu perfil profissional",
-    featured: true,
-  },
-  {
-    label: "Portfolio",
-    url: "https://seusite.dev",
-    icon: Globe,
-    description: "Projetos e trabalhos",
-  },
-  {
-    label: "Blog & Artigos",
-    url: "https://dev.to/seu-usuario",
-    icon: BookOpen,
-    description: "Textos sobre tecnologia",
-  },
-  {
-    label: "Twitter / X",
-    url: "https://twitter.com/seu-usuario",
-    icon: Twitter,
-    description: "Pensamentos e novidades",
-  },
-  {
-    label: "YouTube",
-    url: "https://youtube.com/@seu-usuario",
-    icon: Youtube,
-    description: "Conteúdo em vídeo",
-  },
-  {
-    label: "Me pague um café ☕",
-    url: "https://buymeacoffee.com/seu-usuario",
-    icon: Coffee,
-    description: "Apoie meu trabalho",
-  },
-  {
-    label: "Contato",
-    url: "mailto:seu@email.com",
-    icon: Mail,
-    description: "Entre em contato",
-  },
+const linksData: LinkItem[] = [
+  { icon: Github, url: "https://github.com/Daregny" },
+  { icon: Linkedin, url: "https://www.linkedin.com/in/daregny/" },
+  { icon: Send, url: "https://t.me/techdaregny" },
+  { icon: Twitter, url: "https://x.com/Daregny" },
+  { icon: Instagram, url: "https://www.instagram.com/daregnytech" },
 ];
 
-const socialIcons = [
-  { icon: Github, url: "https://github.com/seu-usuario", label: "GitHub" },
-  { icon: Linkedin, url: "https://linkedin.com/in/seu-usuario", label: "LinkedIn" },
-  { icon: Twitter, url: "https://twitter.com/seu-usuario", label: "Twitter" },
-  { icon: Instagram, url: "https://instagram.com/seu-usuario", label: "Instagram" },
+const socialIcons: { icon: React.ElementType; url: string; label: string }[] = [
+  { icon: Github, url: "https://github.com/Daregny", label: "GitHub" },
+  { icon: Linkedin, url: "https://www.linkedin.com/in/daregny/", label: "LinkedIn" },
+  { icon: Send, url: "https://t.me/techdaregny", label: "Telegram" },
+  { icon: Twitter, url: "https://x.com/Daregny", label: "X / Twitter" },
+  { icon: Instagram, url: "https://www.instagram.com/daregnytech", label: "Instagram" },
 ];
+
+const langLabels: Record<Lang, string> = { pt: "PT", en: "EN", es: "ES" };
+const langs: Lang[] = ["pt", "en", "es"];
+
+// ─── Component ───────────────────────────────────────────────────────────────
 
 export default function LinktreeProfile() {
+  const [lang, setLang] = useState<Lang>("pt");
+  const t = i18n[lang];
+
   return (
     <div
       className="min-h-screen relative flex flex-col items-center px-4 py-12 overflow-hidden"
@@ -96,8 +105,25 @@ export default function LinktreeProfile() {
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
 
-      {/* Glow effects */}
+      {/* Glow effect */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full glow-dot pointer-events-none" />
+
+      {/* Language switcher */}
+      <div className="relative z-10 flex gap-1 mb-8">
+        {langs.map((l) => (
+          <button
+            key={l}
+            onClick={() => setLang(l)}
+            className={`px-3 py-1 rounded-full text-xs font-semibold border transition-all duration-200 ${
+              lang === l
+                ? "bg-primary text-primary-foreground border-primary"
+                : "bg-card/40 text-muted-foreground border-border hover:border-primary/50 hover:text-foreground"
+            }`}
+          >
+            {langLabels[l]}
+          </button>
+        ))}
+      </div>
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-md flex flex-col items-center">
@@ -107,32 +133,33 @@ export default function LinktreeProfile() {
           className="fade-in-up w-24 h-24 rounded-full pulse-ring mb-4 overflow-hidden flex-shrink-0"
           style={{ animationDelay: "0ms" }}
         >
-          <div className="w-full h-full rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-            <Code2 className="w-10 h-10 text-primary-foreground" />
+          <div className="w-full h-full rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-3xl font-bold text-primary-foreground select-none">
+            D
           </div>
         </div>
 
-        {/* Name & Bio */}
+        {/* Name & Title */}
         <div
-          className="fade-in-up text-center mb-2"
+          className="fade-in-up text-center mb-3"
           style={{ animationDelay: "80ms" }}
         >
-          <h1 className="text-2xl font-bold text-gradient mb-1">@seu-usuario</h1>
-          <p className="text-base font-medium text-foreground/90">Desenvolvedor Full Stack</p>
+          <h1 className="text-2xl font-bold text-gradient mb-1">Daregny</h1>
+          <p className="text-xs font-medium text-foreground/70 max-w-xs leading-snug">{t.title}</p>
         </div>
 
+        {/* Bio */}
         <div
           className="fade-in-up text-center mb-6"
           style={{ animationDelay: "140ms" }}
         >
           <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
-            Apaixonado por código, café e boas ideias. Construindo produtos digitais que fazem a diferença. 🚀
+            {t.bio}
           </p>
         </div>
 
-        {/* Social icons */}
+        {/* Social icon strip */}
         <div
-          className="fade-in-up flex items-center gap-4 mb-8"
+          className="fade-in-up flex items-center gap-3 mb-8 flex-wrap justify-center"
           style={{ animationDelay: "200ms" }}
         >
           {socialIcons.map(({ icon: Icon, url, label }) => (
@@ -149,15 +176,16 @@ export default function LinktreeProfile() {
           ))}
         </div>
 
-        {/* Links */}
+        {/* Link cards */}
         <div className="w-full flex flex-col gap-3">
-          {links.map((link, i) => {
+          {linksData.map((link, i) => {
             const Icon = link.icon;
+            const labelObj = t.links[i];
             return (
               <a
-                key={link.label}
+                key={i}
                 href={link.url}
-                target={link.url.startsWith("mailto") ? "_self" : "_blank"}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="fade-in-up link-card rounded-2xl px-5 py-4 flex items-center gap-4 cursor-pointer group"
                 style={{ animationDelay: `${260 + i * 60}ms` }}
@@ -166,10 +194,8 @@ export default function LinktreeProfile() {
                   <Icon className="w-5 h-5 text-primary" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <span className="block text-sm font-600 text-foreground">{link.label}</span>
-                  {link.description && (
-                    <span className="block text-xs text-muted-foreground mt-0.5">{link.description}</span>
-                  )}
+                  <span className="block text-sm font-semibold text-foreground">{labelObj.label}</span>
+                  <span className="block text-xs text-muted-foreground mt-0.5">{labelObj.description}</span>
                 </div>
                 <ExternalLink className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary/70 flex-shrink-0 transition-colors duration-200" />
               </a>
@@ -180,10 +206,12 @@ export default function LinktreeProfile() {
         {/* Footer */}
         <div
           className="fade-in-up mt-10 text-center"
-          style={{ animationDelay: "800ms" }}
+          style={{ animationDelay: "600ms" }}
         >
           <p className="text-xs text-muted-foreground/50">
-            Feito com <span className="text-primary">♥</span> e muito café
+            {t.footer.replace("♥", "").trim().split(" ")[0]}{" "}
+            <span className="text-primary">♥</span>{" "}
+            {t.footer.replace("♥", "").trim().split(" ").slice(1).join(" ")}
           </p>
         </div>
       </div>
