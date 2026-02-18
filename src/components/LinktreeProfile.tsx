@@ -24,7 +24,7 @@ const i18n: Record<
 > = {
   pt: {
     title: "Backend Python Developer | Django · Linux SysAdmin · APIs REST · DevOps · Integrações de Sistemas",
-    bio: "Engenheira de Sistemas com mais de 15 anos em tecnologia. Especialista em Backend Python (Django, Flask), APIs REST, Linux SysAdmin, DevOps e integrações ERP (TOTVS · Odoo). Atuando no Brasil desde 2018, com foco em qualidade de código, automação e liderança em comunidades tech. 🚀",
+    bio: "Engenheira de Sistemas com mais de 15 anos em tecnologia. Especialista em Backend Python (Django, Flask), APIs REST, Linux SysAdmin, DevOps e integrações ERP (TOTVS · Odoo). 🚀",
     links: [
       { label: "GitHub", description: "Repositórios e projetos open source" },
       { label: "LinkedIn", description: "Perfil profissional" },
@@ -36,7 +36,7 @@ const i18n: Record<
   },
   en: {
     title: "Backend Python Developer | Django · Linux SysAdmin · REST APIs · DevOps · System Integrations",
-    bio: "Systems Engineer with 15+ years in technology. Expert in Backend Python (Django, Flask), REST APIs, Linux SysAdmin, DevOps, and ERP integrations (TOTVS · Odoo). Based in Brazil, focused on code quality, automation, and leading tech communities. 🚀",
+    bio: "Systems Engineer with 15+ years in technology. Expert in Backend Python (Django, Flask), REST APIs, Linux SysAdmin, DevOps, and ERP integrations (TOTVS · Odoo). 🚀",
     links: [
       { label: "GitHub", description: "Repositories & open source projects" },
       { label: "LinkedIn", description: "Professional profile" },
@@ -48,7 +48,7 @@ const i18n: Record<
   },
   es: {
     title: "Desarrolladora Backend Python | Django · Linux SysAdmin · APIs REST · DevOps · Integraciones de Sistemas",
-    bio: "Ingeniera de Sistemas con más de 15 años en tecnología. Especialista en Backend Python (Django, Flask), APIs REST, Linux SysAdmin, DevOps e integraciones ERP (TOTVS · Odoo). Trabajando en Brasil desde 2018, enfocada en calidad de código, automatización y liderazgo en comunidades tech. 🚀",
+    bio: "Ingeniera de Sistemas con más de 15 años en tecnología. Especialista en Backend Python (Django, Flask), APIs REST, Linux SysAdmin, DevOps e integraciones ERP (TOTVS · Odoo). 🚀",
     links: [
       { label: "GitHub", description: "Repositorios y proyectos open source" },
       { label: "LinkedIn", description: "Perfil profesional" },
