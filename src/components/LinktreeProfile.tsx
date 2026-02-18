@@ -70,7 +70,7 @@ interface LinkItem {
 const linksData: LinkItem[] = [
   { icon: Github, url: "https://github.com/Daregny" },
   { icon: Linkedin, url: "https://www.linkedin.com/in/daregny/" },
-  { icon: Send, url: "https://t.me/techdaregny" },
+  { icon: Send, url: "https://t.me/Daregny" },
   { icon: Twitter, url: "https://x.com/Daregny" },
   { icon: Instagram, url: "https://www.instagram.com/daregnytech" },
 ];
@@ -78,7 +78,7 @@ const linksData: LinkItem[] = [
 const socialIcons: { icon: React.ElementType; url: string; label: string }[] = [
   { icon: Github, url: "https://github.com/Daregny", label: "GitHub" },
   { icon: Linkedin, url: "https://www.linkedin.com/in/daregny/", label: "LinkedIn" },
-  { icon: Send, url: "https://t.me/techdaregny", label: "Telegram" },
+  { icon: Send, url: "https://t.me/Daregny", label: "Telegram" },
   { icon: Twitter, url: "https://x.com/Daregny", label: "X / Twitter" },
   { icon: Instagram, url: "https://www.instagram.com/daregnytech", label: "Instagram" },
 ];
