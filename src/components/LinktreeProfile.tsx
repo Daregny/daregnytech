@@ -1,5 +1,6 @@
 import { useState } from "react";
 import bgAurora from "@/assets/bg-aurora.jpg";
+import avatarImg from "@/assets/avatar.jpeg";
 
 import {
   Github,
@@ -134,7 +135,7 @@ export default function LinktreeProfile() {
           className="fade-in-up w-24 h-24 rounded-full pulse-ring mb-4 overflow-hidden flex-shrink-0"
           style={{ animationDelay: "0ms" }}
         >
-          <img src="/avatar.jpeg" alt="Daregny" className="w-full h-full object-cover object-top" />
+          <img src={avatarImg} alt="Daregny" className="w-full h-full object-cover object-top" />
         </div>
 
         {/* Name & Title */}
