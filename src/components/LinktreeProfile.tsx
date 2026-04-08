@@ -103,6 +103,16 @@ const socialIcons: { icon: React.ElementType; url: string; label: string }[] = [
   { icon: Instagram, url: "https://www.instagram.com/daregnytech", label: "Instagram" },
 ];
 
+interface ChannelItem {
+  icon: React.ElementType;
+  url: string;
+}
+
+const channelsData: ChannelItem[] = [
+  { icon: MessageCircle, url: "https://whatsapp.com/channel/0029VaBaZe29Gv7dpHtM1E0U" },
+  { icon: Send, url: "https://t.me/cursos_gratis_es" },
+];
+
 const langLabels: Record<Lang, string> = { pt: "PT", en: "EN", es: "ES" };
 const langs: Lang[] = ["pt", "en", "es"];
 
