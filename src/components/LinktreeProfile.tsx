@@ -231,7 +231,40 @@ export default function LinktreeProfile() {
           })}
         </div>
 
-        {/* Footer */}
+        {/* Channels section */}
+        <div className="w-full mt-8">
+          <h2
+            className="fade-in-up text-sm font-bold text-foreground/80 text-center mb-3"
+            style={{ animationDelay: "560ms" }}
+          >
+            {t.channelsTitle}
+          </h2>
+          <div className="flex flex-col gap-3">
+            {channelsData.map((channel, i) => {
+              const Icon = channel.icon;
+              const labelObj = t.channels[i];
+              return (
+                <a
+                  key={i}
+                  href={channel.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="fade-in-up link-card rounded-2xl px-5 py-4 flex items-center gap-4 cursor-pointer group"
+                  style={{ animationDelay: `${580 + i * 60}ms` }}
+                >
+                  <div className="w-10 h-10 rounded-xl bg-accent/20 border border-accent/30 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/30 group-hover:border-accent/50 transition-all duration-200">
+                    <Icon className="w-5 h-5 text-accent-foreground" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <span className="block text-sm font-semibold text-foreground">{labelObj.label}</span>
+                    <span className="block text-xs text-muted-foreground mt-0.5">{labelObj.description}</span>
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary/70 flex-shrink-0 transition-colors duration-200" />
+                </a>
+              );
+            })}
+          </div>
+        </div>
         <div
           className="fade-in-up mt-10 text-center"
           style={{ animationDelay: "600ms" }}
