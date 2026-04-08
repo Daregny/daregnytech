@@ -40,7 +40,7 @@ const i18n: Record<
     channelsTitle: "📢 Canais de Cursos Grátis",
     channels: [
       { label: "WhatsApp", description: "Canal Modo Gratis ON" },
-      { label: "Telegram", description: "Canal de Cursos Grátis" },
+      { label: "Telegram", description: "Canal Modo Gratis ON" },
     ],
     footer: "Feito com ♥ e muito Python",
   },
