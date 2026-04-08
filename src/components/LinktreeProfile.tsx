@@ -9,6 +9,7 @@ import {
   ExternalLink,
   Send,
   Twitter,
+  MessageCircle,
 } from "lucide-react";
 
 // ─── i18n ────────────────────────────────────────────────────────────────────
@@ -21,6 +22,8 @@ const i18n: Record<
     title: string;
     bio: string;
     links: { label: string; description: string }[];
+    channelsTitle: string;
+    channels: { label: string; description: string }[];
     footer: string;
   }
 > = {
@@ -34,6 +37,11 @@ const i18n: Record<
       { label: "X / Twitter", description: "Novidades e pensamentos tech" },
       { label: "Instagram", description: "Bastidores e comunidade tech" },
     ],
+    channelsTitle: "📢 Canais de Cursos Grátis",
+    channels: [
+      { label: "WhatsApp", description: "Canal Modo Gratis ON" },
+      { label: "Telegram", description: "Canal de Cursos Grátis" },
+    ],
     footer: "Feito com ♥ e muito Python",
   },
   en: {
@@ -46,6 +54,11 @@ const i18n: Record<
       { label: "X / Twitter", description: "Tech news & thoughts" },
       { label: "Instagram", description: "Behind the scenes & tech community" },
     ],
+    channelsTitle: "📢 Free Courses Channels",
+    channels: [
+      { label: "WhatsApp", description: "Modo Gratis ON Channel" },
+      { label: "Telegram", description: "Free Courses Channel" },
+    ],
     footer: "Made with ♥ and lots of Python",
   },
   es: {
@@ -57,6 +70,11 @@ const i18n: Record<
       { label: "Telegram", description: "¡Hablemos!" },
       { label: "X / Twitter", description: "Novedades y pensamientos tech" },
       { label: "Instagram", description: "Detrás de escena y comunidad tech" },
+    ],
+    channelsTitle: "📢 Canales de Cursos Gratis",
+    channels: [
+      { label: "WhatsApp", description: "Canal Modo Gratis ON" },
+      { label: "Telegram", description: "Canal de Cursos Gratis" },
     ],
     footer: "Hecho con ♥ y mucho Python",
   },
@@ -83,6 +101,16 @@ const socialIcons: { icon: React.ElementType; url: string; label: string }[] = [
   { icon: Send, url: "https://t.me/Daregny", label: "Telegram" },
   { icon: Twitter, url: "https://x.com/Daregny", label: "X / Twitter" },
   { icon: Instagram, url: "https://www.instagram.com/daregnytech", label: "Instagram" },
+];
+
+interface ChannelItem {
+  icon: React.ElementType;
+  url: string;
+}
+
+const channelsData: ChannelItem[] = [
+  { icon: MessageCircle, url: "https://whatsapp.com/channel/0029VaBaZe29Gv7dpHtM1E0U" },
+  { icon: Send, url: "https://t.me/cursos_gratis_es" },
 ];
 
 const langLabels: Record<Lang, string> = { pt: "PT", en: "EN", es: "ES" };
@@ -203,7 +231,40 @@ export default function LinktreeProfile() {
           })}
         </div>
 
-        {/* Footer */}
+        {/* Channels section */}
+        <div className="w-full mt-8">
+          <h2
+            className="fade-in-up text-sm font-bold text-foreground/80 text-center mb-3"
+            style={{ animationDelay: "560ms" }}
+          >
+            {t.channelsTitle}
+          </h2>
+          <div className="flex flex-col gap-3">
+            {channelsData.map((channel, i) => {
+              const Icon = channel.icon;
+              const labelObj = t.channels[i];
+              return (
+                <a
+                  key={i}
+                  href={channel.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="fade-in-up link-card rounded-2xl px-5 py-4 flex items-center gap-4 cursor-pointer group"
+                  style={{ animationDelay: `${580 + i * 60}ms` }}
+                >
+                  <div className="w-10 h-10 rounded-xl bg-accent/20 border border-accent/30 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/30 group-hover:border-accent/50 transition-all duration-200">
+                    <Icon className="w-5 h-5 text-accent-foreground" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <span className="block text-sm font-semibold text-foreground">{labelObj.label}</span>
+                    <span className="block text-xs text-muted-foreground mt-0.5">{labelObj.description}</span>
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary/70 flex-shrink-0 transition-colors duration-200" />
+                </a>
+              );
+            })}
+          </div>
+        </div>
         <div
           className="fade-in-up mt-10 text-center"
           style={{ animationDelay: "600ms" }}
