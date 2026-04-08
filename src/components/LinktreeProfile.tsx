@@ -40,7 +40,7 @@ const i18n: Record<
     channelsTitle: "📢 Canais de Cursos Grátis",
     channels: [
       { label: "WhatsApp", description: "Canal Modo Gratis ON" },
-      { label: "Telegram", description: "Canal de Cursos Grátis" },
+      { label: "Telegram", description: "Canal Modo Gratis ON" },
     ],
     footer: "Feito com ♥ e muito Python",
   },
@@ -57,7 +57,7 @@ const i18n: Record<
     channelsTitle: "📢 Free Courses Channels",
     channels: [
       { label: "WhatsApp", description: "Modo Gratis ON Channel" },
-      { label: "Telegram", description: "Free Courses Channel" },
+      { label: "Telegram", description: "Modo Gratis ON Channel" },
     ],
     footer: "Made with ♥ and lots of Python",
   },
@@ -74,7 +74,7 @@ const i18n: Record<
     channelsTitle: "📢 Canales de Cursos Gratis",
     channels: [
       { label: "WhatsApp", description: "Canal Modo Gratis ON" },
-      { label: "Telegram", description: "Canal de Cursos Gratis" },
+      { label: "Telegram", description: "Canal Modo Gratis ON" },
     ],
     footer: "Hecho con ♥ y mucho Python",
   },
