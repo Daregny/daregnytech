@@ -9,6 +9,7 @@ import {
   ExternalLink,
   Send,
   Twitter,
+  MessageCircle,
 } from "lucide-react";
 
 // ─── i18n ────────────────────────────────────────────────────────────────────
