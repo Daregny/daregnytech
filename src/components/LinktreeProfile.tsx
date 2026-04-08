@@ -22,6 +22,8 @@ const i18n: Record<
     title: string;
     bio: string;
     links: { label: string; description: string }[];
+    channelsTitle: string;
+    channels: { label: string; description: string }[];
     footer: string;
   }
 > = {
@@ -35,6 +37,11 @@ const i18n: Record<
       { label: "X / Twitter", description: "Novidades e pensamentos tech" },
       { label: "Instagram", description: "Bastidores e comunidade tech" },
     ],
+    channelsTitle: "📢 Canais de Cursos Grátis",
+    channels: [
+      { label: "WhatsApp", description: "Canal Modo Gratis ON" },
+      { label: "Telegram", description: "Canal de Cursos Grátis" },
+    ],
     footer: "Feito com ♥ e muito Python",
   },
   en: {
@@ -47,6 +54,11 @@ const i18n: Record<
       { label: "X / Twitter", description: "Tech news & thoughts" },
       { label: "Instagram", description: "Behind the scenes & tech community" },
     ],
+    channelsTitle: "📢 Free Courses Channels",
+    channels: [
+      { label: "WhatsApp", description: "Modo Gratis ON Channel" },
+      { label: "Telegram", description: "Free Courses Channel" },
+    ],
     footer: "Made with ♥ and lots of Python",
   },
   es: {
@@ -58,6 +70,11 @@ const i18n: Record<
       { label: "Telegram", description: "¡Hablemos!" },
       { label: "X / Twitter", description: "Novedades y pensamientos tech" },
       { label: "Instagram", description: "Detrás de escena y comunidad tech" },
+    ],
+    channelsTitle: "📢 Canales de Cursos Gratis",
+    channels: [
+      { label: "WhatsApp", description: "Canal Modo Gratis ON" },
+      { label: "Telegram", description: "Canal de Cursos Gratis" },
     ],
     footer: "Hecho con ♥ y mucho Python",
   },
